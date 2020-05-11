@@ -24,9 +24,7 @@ class AppFactory(Module):
         return self
 
     def create_argument_parser(self, argument_parser: ArgumentParser):
-        subparsers = argument_parser.add_subparsers(
-            dest=self._subparsers_name, required=True
-        )
+        subparsers = argument_parser.add_subparsers(dest=self._subparsers_name)
 
         for command_name, command_impl in self._commands.items():
             command_impl.create_argument_parser(subparsers.add_parser(command_name))
